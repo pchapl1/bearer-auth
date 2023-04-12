@@ -54,7 +54,7 @@ describe('Auth Router', () => {
       .auth(username, password);
 
     accessToken = response.body.token;
-
+    console.log("ACCESS TOKEN: ", accessToken)
     // First, use basic to login to get a token
     const bearerResponse = await mockRequest
       .get('/users')
@@ -105,8 +105,12 @@ describe('Auth Router', () => {
 
     const response = await mockRequest.get('/users')
       .set('Authorization', `Bearer ${accessToken}`);
-
-    expect(response.status).toBe(200);
+      console.log("=======================================================")
+      console.log("=======================================================")
+    console.log('RESPONSE: ', response)
+    console.log("=======================================================")
+    console.log("=======================================================")
+    expect(response.status).toBe(200);     
     expect(response.body).toBeTruthy();
     expect(response.body).toEqual(expect.anything());
   });
